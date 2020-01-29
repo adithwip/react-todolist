@@ -6,16 +6,24 @@ import TodoForm from "../components/TodoForm";
 import Todos from "../components/Todos";
 
 const TodoList = () => {
-  const [ todos, setTodos ] = useState([
+  const [todos, setTodos] = useState([
     { text: "Learning React!" },
     { text: "Learning React Hooks!" },
     { text: "Learning styling in React!" }
-  ])
+  ]);
+
+  const addTodo = value => {
+    const addedTodo = [...todos, { text: value }];
+
+    setTodos(addedTodo);
+  };
+
+  console.log("todos", todos);
 
   return (
     <Paper>
       <Header />
-      <TodoForm />
+      <TodoForm addTodo={addTodo} />
       <Todos todos={todos} />
     </Paper>
   );
